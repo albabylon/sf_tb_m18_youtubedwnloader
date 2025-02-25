@@ -1,5 +1,4 @@
-﻿using AngleSharp.Dom;
-using sf_tb_m18_youtubedwnloader.Abstract;
+﻿using sf_tb_m18_youtubedwnloader.Abstract;
 using sf_tb_m18_youtubedwnloader.Commands;
 using sf_tb_m18_youtubedwnloader.Models.Invoker;
 using sf_tb_m18_youtubedwnloader.Models.Receiver;
@@ -31,7 +30,7 @@ public class Program
 
             Console.WriteLine("Видео скачано");
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             Console.WriteLine($"Возникла ошибка:\n{ex.Message}");
         }
