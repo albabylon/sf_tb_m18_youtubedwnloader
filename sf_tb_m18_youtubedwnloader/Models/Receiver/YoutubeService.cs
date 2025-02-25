@@ -58,7 +58,7 @@ namespace sf_tb_m18_youtubedwnloader.Models.Receiver
         [Obsolete]
         private YoutubeClient SetProxyConnect()
         {
-            var proxy = new WebProxy("http://85.215.64.49:80");
+            var proxy = new WebProxy("");
             var httpClient = new HttpClient(new HttpClientHandler { Proxy = proxy });
             return new YoutubeClient(httpClient);
         }

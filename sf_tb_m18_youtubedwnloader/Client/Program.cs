@@ -19,6 +19,8 @@ public class Program
         invoker.SetCommand(getIngoCmd);
         await invoker.Start();
 
+        Console.WriteLine();
+
         Console.WriteLine("Скачивание видео...");
         ICommand downloadCmd = new DownloadCommand(youtubeService);
         invoker.SetCommand(downloadCmd);
