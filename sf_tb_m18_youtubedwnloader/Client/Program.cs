@@ -7,26 +7,33 @@ public class Program
 {
     public async static Task Main(string[] args)
     {
-        Console.WriteLine("Добро пожаловать в консоль для скачивания видео с Youtube");
-        
-        var url = AskUrl();
+        try
+        {
+            Console.WriteLine("Добро пожаловать в консоль для скачивания видео с Youtube");
 
-        var youtubeService = new YoutubeService(url);
-        var invoker = new CommandInvoker();
+            var url = AskUrl();
 
-        Console.WriteLine("Получение информации о видео...");
-        ICommand getIngoCmd = new GetInfoCommand(youtubeService);
-        invoker.SetCommand(getIngoCmd);
-        await invoker.Start();
+            var youtubeService = new YoutubeService(url);
+            var invoker = new CommandInvoker();
 
-        Console.WriteLine();
+            Console.WriteLine("Получение информации о видео...");
+            ICommand getIngoCmd = new GetInfoCommand(youtubeService);
+            invoker.SetCommand(getIngoCmd);
+            await invoker.Start();
 
-        Console.WriteLine("Скачивание видео...");
-        ICommand downloadCmd = new DownloadCommand(youtubeService);
-        invoker.SetCommand(downloadCmd);
-        await invoker.Start();
+            Console.WriteLine();
 
-        Console.WriteLine("Видео скачано");
+            Console.WriteLine("Скачивание видео...");
+            ICommand downloadCmd = new DownloadCommand(youtubeService);
+            invoker.SetCommand(downloadCmd);
+            await invoker.Start();
+
+            Console.WriteLine("Видео скачано");
+        }
+        catch (Exception ex) 
+        {
+            Console.WriteLine($"Возникла ошибка:\n{ex.Message}");
+        }
     }
 
     private static string AskUrl()
