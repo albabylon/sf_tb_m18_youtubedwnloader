@@ -1,4 +1,5 @@
-﻿using sf_tb_m18_youtubedwnloader.Abstract;
+﻿using AngleSharp.Dom;
+using sf_tb_m18_youtubedwnloader.Abstract;
 using sf_tb_m18_youtubedwnloader.Commands;
 using sf_tb_m18_youtubedwnloader.Models.Invoker;
 using sf_tb_m18_youtubedwnloader.Models.Receiver;
@@ -42,12 +43,17 @@ public class Program
 
         string url = Console.ReadLine();
 
-        while (string.IsNullOrWhiteSpace(url))
+        while (string.IsNullOrWhiteSpace(url) || !IsUrl(url))
         {
             Console.WriteLine("Ссылка не введена. Введите ссылку на видео для скачивания:");
             url = Console.ReadLine();
         }
 
         return url;
+    }
+
+    private static bool IsUrl(string url)
+    {
+        return Uri.TryCreate(url, UriKind.Absolute, out Uri result) && (result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps);
     }
 }
