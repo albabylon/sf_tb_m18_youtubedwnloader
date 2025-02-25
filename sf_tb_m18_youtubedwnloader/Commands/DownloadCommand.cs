@@ -12,9 +12,9 @@ namespace sf_tb_m18_youtubedwnloader.Commands
             this.youtubeService = youtubeService;
         }
 
-        public void Execute()
+        public async Task Execute()
         {
-            youtubeService.DownloadVideo();
+            await youtubeService.DownloadVideo();
         }
     }
 }

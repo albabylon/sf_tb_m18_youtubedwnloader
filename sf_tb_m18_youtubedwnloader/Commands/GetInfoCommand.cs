@@ -12,9 +12,11 @@ namespace sf_tb_m18_youtubedwnloader.Commands
             this.youtubeService = youtubeService;
         }
 
-        public void Execute()
+        public async Task Execute()
         {
-            youtubeService.GetInfo();
+            var info = await youtubeService.GetInfo();
+
+            Console.WriteLine($"{info.Author}\n{info.Name} - {info.Duration}\n{info.Description}");
         }
     }
 }

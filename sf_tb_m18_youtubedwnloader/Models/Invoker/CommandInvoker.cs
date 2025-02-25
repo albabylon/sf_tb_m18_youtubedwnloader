@@ -2,6 +2,9 @@
 
 namespace sf_tb_m18_youtubedwnloader.Models.Invoker
 {
+    /// <summary>
+    /// Класс вызывающий команды (Invoker/Sender)
+    /// </summary>
     public class CommandInvoker
     {
         private ICommand command;
@@ -11,14 +14,9 @@ namespace sf_tb_m18_youtubedwnloader.Models.Invoker
             this.command = command;
         }
 
-        public void GetInfo()
+        public async Task Start() //если у команды будет еще методы, например отмены, то будет еще метод
         {
-
-        }
-
-        public void Download()
-        {
-
+            await command.Execute();
         }
     }
 }

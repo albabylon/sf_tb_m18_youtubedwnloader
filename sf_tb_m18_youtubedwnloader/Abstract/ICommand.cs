@@ -5,6 +5,6 @@
         /// <summary>
         /// Исполнение абстрактной команды
         /// </summary>
-        void Execute();
+        Task Execute();
     }
 }
